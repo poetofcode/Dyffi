@@ -1,0 +1,1 @@
+JS-library for the games [DDA](http://en.wikipedia.org/wiki/Dynamic_game_difficulty_balancing) process
