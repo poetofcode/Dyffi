@@ -11,3 +11,6 @@ But  games not always so interesting as they can be.
 We really deep in game only it have some difficulty in walkthrough but not more than our physical, intellectual or psychological abilities.
 
 <img src="https://raw.githubusercontent.com/kreshikhin/Dyffi/master/difficulty-vs-experience.png">
+
+
+<img src="https://raw.githubusercontent.com/kreshikhin/Dyffi/master/optimal-difficulty.png">
