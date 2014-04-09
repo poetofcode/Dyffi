@@ -6,3 +6,4 @@ The Problem
 
 People like to play in games by several reasons: pictures, music, idea. But there is main reason why people like games. Games allow to learn something new.
 
+<img src="https://raw.githubusercontent.com/kreshikhin/Dyffi/master/difficulty-vs-experience.png">
