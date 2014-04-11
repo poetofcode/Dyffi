@@ -29,7 +29,10 @@ function Gameplay(canvas, lastStatistics) {
 	this.alertCatched = new Audio('assets/catched.mp3');
 	this.alertUncatched = new Audio('assets/uncatched.mp3');
 
-	this.dyffi = new Dyffi({/* {speed: {max: 10, min: 50, step: 2} } */}, lastStatistics);
+	this.dyffi = new Dyffi({timeForNew: {min: 10, max: 30, step: -2}}, lastStatistics);
+
+	this.timeForNew = this.dyffi.getCurrentParam('timeForNew');
+	console.log('current:', this.timeForNew);
 }
 
 Gameplay.prototype.start = function() {
@@ -56,7 +59,7 @@ Gameplay.prototype.isLaunched = function() {
 }
 
 Gameplay.prototype.tick = function() {
-	if(this.time > 10) {
+	if(this.time > this.timeForNew) {
 		var factory = new RandomBallFactory();
 		var newBall = factory.create();
 		var lastBall = this.balls[this.balls.length-1];
@@ -78,11 +81,11 @@ Gameplay.prototype.tick = function() {
 		if(ball.isTimeForCatch()) {
 			if(this.player.position == ball.position) {
 				this.balls.splice(i, 1);
-				this.alertCatched.currentTime = 0;			
+				this.alertCatched.currentTime = 0;
 				this.alertCatched.play();
 				this.countCatched++;
-				
-				this.dyffi.step(true, {/* {speed: {current: 25} } */});
+
+				this.dyffi.step(true, {timeForNew: this.timeForNew});
 			} else {
 				ball.fallen = true;
 				this.updateScreen();
@@ -90,8 +93,11 @@ Gameplay.prototype.tick = function() {
 				this.stop();
 				this.onGameOverFunc();
 
-				this.dyffi.step(false, {/* {speed: {current: 35} } */});
+				this.dyffi.step(false, {timeForNew: this.timeForNew});
 			}
+
+			this.timeForNew = this.dyffi.getCurrentParam('timeForNew');
+			console.log('current:', this.timeForNew);
 
 			this.onNextStepFunc(this.dyffi.getStatistics());
 		}
@@ -131,15 +137,15 @@ Gameplay.prototype.updateScreen = function() {
 		context.beginPath();
 		context.arc(step/2 + step*ball.position, ball.timeFromBorn*ballStep, ballRadius, 0, 2 * Math.PI, false);
 		context.fillStyle = ball.fallen ? "#D33": cyan;
-		context.fill();	
-	};	
+		context.fill();
+	};
 
 	// draw pipes
 	for(var i=0; i<4; i++) {
 		context.beginPath();
 		context.rect(step/2 + step*i - pipeWidth/2, 0, pipeWidth, pipeHeight);
 		context.fillStyle = "#45B729";
-		context.fill();	
+		context.fill();
 	}
 
 	// draw player
@@ -147,7 +153,7 @@ Gameplay.prototype.updateScreen = function() {
 	context.beginPath();
 	context.rect(playerPosX, screenHeight - playerHeight - 20, playerWidth, playerHeight);
 	context.fillStyle = yellow;
-	context.fill();	
+	context.fill();
 	context.font="36px Verdana";
 	context.fillStyle = "#33A";
 	context.textAlign = "center";
@@ -192,8 +198,6 @@ function RandomBallFactory() {}
 RandomBallFactory.prototype.create = function() {
 	var randomPosition = Math.round(Math.random() * 3);
 	var ball = new Ball(randomPosition);
-
-	// ball.speed = this.dyffi.getValueByName('speed');
 
 	return ball;
 }

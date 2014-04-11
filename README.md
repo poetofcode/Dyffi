@@ -12,5 +12,7 @@ We really deep in game only it have some difficulty in walkthrough but not more 
 
 <img src="https://raw.githubusercontent.com/kreshikhin/Dyffi/master/difficulty-vs-experience.png">
 
-
+Optimal Difficult
+=================
 <img src="https://raw.githubusercontent.com/kreshikhin/Dyffi/master/optimal-difficulty.png">
+
