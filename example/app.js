@@ -6,7 +6,7 @@ var monk = require('monk');
 var app = express();
 
 // all environments
-app.set('port', 80);
+app.set('port', 3033);
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.methodOverride());
