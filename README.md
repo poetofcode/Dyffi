@@ -4,7 +4,7 @@ JS-library for the games [DDA](http://en.wikipedia.org/wiki/Dynamic_game_difficu
 The Problem of Game Difficulty
 ==============================
 
-People like to play in games for several reasons: attractive graphics, beatiful music, good idea. But there is main reason why people prefer games instead music or cinema. Games allow to learn something really new. Kill enemies, drive spacecraft, govern country and do many over crazy things.
+People likes to play in games for several reasons: attractive graphics, beatiful music, good idea. But there is main reason why people prefer games instead music or cinema. Games allow to learn something really new. Kill enemies, drive spacecraft, govern country and do many over crazy things.
 
 But  games not always so interesting as they can be.
 
